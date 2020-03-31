@@ -1,0 +1,24 @@
+version: '3'
+services:
+  code-server:
+      image: flutter-ide
+      container_name: flutter-ide
+      network_mode: "host"
+      environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Europe/London
+          - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+          - DISPLAY=:0
+      privileged: true
+      tty: true
+      stdin_open: true
+      volumes:
+          - $XDG_RUNTIME_DIR:$XDG_RUNTIME_DIR
+          - /tmp/.X11-unix:/tmp/.X11-unix
+          - $HOME/.Xauthority:/home/coder/.Xauthority
+          - /dev:/dev
+          - $PWD:/home/coder/project
+
+
+
